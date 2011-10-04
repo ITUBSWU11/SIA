@@ -1,4 +1,4 @@
-package src.sia;
+package sia;
 
 //import
 import java.util.ArrayList;
