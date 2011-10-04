@@ -1,11 +1,7 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package sia;
 
 /**
- *
+ * Space Invaders Advanced
  * @author hypesystem
  */
 public class SIA {
@@ -14,6 +10,7 @@ public class SIA {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.println("LOL");
+        Game game = new Game();
+        game.play();
     }
 }
