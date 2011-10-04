@@ -1,3 +1,6 @@
+package sia;
+
+import java.util.ArrayList;
 
 /**
  * Write a description of class Enemy here.
@@ -11,7 +14,7 @@ public class Enemy
 	private int pos_x;
 	private int pos_y;
 	// private Image image;
-	// private HashMap directions;
+        private ArrayList<String> directions;
 	private int health;
 	private int damage;
 
@@ -130,7 +133,7 @@ public class Enemy
 	/**
 	 * @return pos_x The current x position of enemy.
 	 */
-	public int getPosX()
+	public int getX()
 	{
 		return pos_x;
 	}
@@ -138,7 +141,7 @@ public class Enemy
 	/**
 	 * @return pos_y The current x position of enemy.
 	 */
-	public int getPosY()
+	public int getY()
 	{
 		return pos_y;
 	}

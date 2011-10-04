@@ -50,13 +50,13 @@ public class Player {
      * Move left or right by entering the direction.
      * @param direction left or right
      */
-    public void move(String direction) {
+    public void move(String direction, int amount) {
         if(directions.contains(direction)) {
             if(direction.equals("left")) {
-                pos_x--;
+                pos_x -= amount;
             }
             else if(direction.equals("right")) {
-                pos_x++;
+                pos_x += amount;
             }
         }
     }

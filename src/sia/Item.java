@@ -39,6 +39,9 @@ public class Item {
     public void setDiscount(int discount_in_pct) {
         discount_pct = discount_in_pct;
     }
+    public int getDiscount() {
+        return discount_pct;
+    }
     
     public String inspect() {
         String state_upgrade = "";
