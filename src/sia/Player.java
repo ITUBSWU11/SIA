@@ -3,7 +3,7 @@ package sia;
 //import
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Set;
+import java.util.Collection;
 
 /**
  * A player instance of Space Invaders Advanced.
@@ -65,18 +65,16 @@ public class Player {
      * missing: list upgrades
      * @return String with all items and upgrades
      */
-    public String getInventory() {
-        int i = 0;
-        String returnstring = "";
+    public ArrayList<Item> getInventory() {
+        ArrayList<Item> inventory = new ArrayList<Item>();
         for(Item item : items) {
-            returnstring += "("+i+"): "+item.getName()+" | ";
-            i++;
+            inventory.add(item);
         }
-        Set keys = upgrades.keySet();
-        /*for(String key : keys) {
-            
-        }*/
-        return returnstring;
+        Collection<Item> upgrades_collection = upgrades.values();
+        for(Item upgrade : upgrades_collection) {
+            inventory.add(upgrade);
+        }
+        return inventory;
     }
     
     /**
@@ -101,11 +99,16 @@ public class Player {
      */
     public void add(Item item) {
         if(item.isUpgrade()) {
-            //do add upgrade
+            if(!upgrades.containsValue(item)) {
+                upgrades.put(item.getName(), item);
+            }
+            else {
+                //System.out.println("Already have upgrade! Error!");
+            }
         }
         else {
             if(!items.isEmpty() && items.size() >= 10) {
-                System.out.println("Inventory full! Length: "+items.size());
+                //System.out.println("Inventory full! Length: "+items.size());
             }
             else {
                 items.add(item);
