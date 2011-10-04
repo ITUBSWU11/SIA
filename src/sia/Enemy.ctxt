@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.params=health\ damage
+comment0.target=Enemy(int,\ int)
+comment0.text=\r\n\ Create\ an\ enemy.\ (That\ is,\ one\ enemy\ per\ call).\ \r\n\ \r\n\ @param\ health\ The\ health\ of\ the\ enemy.\ If\ negative,\ it\ will\ default\ to\ 0.\r\n\ @param\ damage\ The\ damage\ of\ the\ enemy.\ If\ negative,\ it\ will\ default\ to\ 0.\r\n
+comment1.params=newHealth
+comment1.target=void\ setHealth(int)
+comment1.text=\ \r\n\ Modifies\ the\ enemy's\ health\r\n\ \r\n\ @param\ newHealth\ Will\ set\ the\ current\ health\ of\ the\ enemy\ to\ newHealth.\ If\ negative,\ it\ will\ default\ to\ 0.\ \r\n
+comment2.params=newDamage
+comment2.target=void\ setDamage(int)
+comment2.text=\ \r\n\ Modifies\ the\ enemy's\ damage\r\n\ \r\n\ @param\ newDamage\ Will\ set\ the\ current\ damage\ of\ the\ enemy\ to\ newDamage.\ If\ negative,\ it\ will\ default\ to\ 0.\ \r\n
+comment3.params=
+comment3.target=int\ getHealth()
+comment3.text=\ \r\n\ @return\ health\ The\ current\ health\ of\ the\ enemy.\r\n
+comment4.params=
+comment4.target=int\ getDamage()
+comment4.text=\ \r\n\ @return\ damage\ The\ current\ damage\ of\ the\ enemy.\r\n
+numComments=5
