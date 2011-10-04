@@ -7,15 +7,17 @@ package sia;
 public class Item {
     private String name;
     private int price;
-    private int discountPct;
+    private int discount_pct;
     private int health;
     private int damage;
     private boolean is_upgrade;
     
-    public Item(String name) {
+    public Item(String name, int price, int health, int damage, boolean is_upgrade) {
         this.name = name;
-        System.out.println("hej");
-        is_upgrade = false;
+        this.price = price;
+        this.health = health;
+        this.damage = damage;
+        this.is_upgrade = is_upgrade;
     }
     
     public String getName() {
@@ -24,9 +26,29 @@ public class Item {
     public boolean isUpgrade() {
         return is_upgrade;
     }
+    public int getPrice() {
+        int final_price = price - (price/100)*discount_pct;
+        return final_price;
+    }
+    public int getHealth() {
+        return health;
+    }
+    public int getDamage() {
+        return damage;
+    }
+    public void setDiscount(int discount_in_pct) {
+        discount_pct = discount_in_pct;
+    }
     
     public String inspect() {
-        return "Item information";
+        String state_upgrade = "";
+        if(isUpgrade()) {
+            state_upgrade = "Upgrade";
+        }
+        else {
+            state_upgrade = "Item";
+        }
+        return "=="+getName()+"==\n -"+state_upgrade+"-\nPrice: "+getPrice()+"\nHealth+: "+getHealth()+"\nDamage+: "+getDamage();
     }
     
 }

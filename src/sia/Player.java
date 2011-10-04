@@ -51,7 +51,14 @@ public class Player {
      * @param direction left or right
      */
     public void move(String direction) {
-        
+        if(directions.contains(direction)) {
+            if(direction.equals("left")) {
+                pos_x--;
+            }
+            else if(direction.equals("right")) {
+                pos_x++;
+            }
+        }
     }
     /**
      * Prints items and upgrades had by player.
@@ -72,12 +79,26 @@ public class Player {
         return returnstring;
     }
     
+    /**
+     * Drop an item
+     * @param item_number 
+     */
     public void drop(int item_number) {
         items.remove(item_number);
     }
+    /**
+     * Drop an upgrade
+     * @param upgrade_key 
+     */
     public void drop(String upgrade_key) {
         upgrades.remove(upgrade_key);
     }
+    
+    /**
+     * Add an item or upgrade
+     * missing: should output in some format, not string.
+     * @param item 
+     */
     public void add(Item item) {
         if(item.isUpgrade()) {
             //do add upgrade
@@ -90,22 +111,64 @@ public class Player {
                 items.add(item);
             }
         }
+        calcDamage();
     }
+    
+    /**
+     * get player money
+     * @return 
+     */
     public int getMoney() {
         return money;
     }
+    
+    /**
+     * change player money (shop)
+     * @param change 
+     */
     public void alterMoney(int change) {
         money += change;
     }
+    
+    /**
+     * get player health
+     * @return 
+     */
     public int getHealth() {
         return health;
     }
+    
+    /**
+     * change player health (damage taken)
+     * @param change negative on dmg taken, positive on health potion
+     */
     public void alterHealth(int change) {
         health += change;
     }
+    
+    /**
+     * get the amount of damage the player does.
+     * @return 
+     */
     public int getDamage() {
         return damage;
     }
+    
+    /**
+     * Calculate damage form items.
+     */
+    private void calcDamage() {
+        int total_damage = 0;
+        for(Item item : items) {
+            total_damage += item.getDamage();
+        }
+        System.out.println("Total damage: "+total_damage);
+    }
+    
+     /**
+     * set the amount of damage the player does. done internally.
+     * @param change 
+     */
     private void setDamage(int change) {
         damage = change;
     }
