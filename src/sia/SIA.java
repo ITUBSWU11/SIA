@@ -1,4 +1,4 @@
-package sia;
+package src.sia;
 
 /**
  * Space Invaders Advanced
