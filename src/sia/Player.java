@@ -2,6 +2,8 @@ package sia;
 
 //import
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Set;
 
 /**
  * A player instance of Space Invaders Advanced.
@@ -11,13 +13,19 @@ public class Player {
     private int pos_x;
     private int pos_y;
 //  private Image image;
-//  private HashMap directions;
-    private ArrayList<Item> inventory;
+    private ArrayList<String> directions;
+    private ArrayList<Item> items;
+    private HashMap<String, Item> upgrades;
+    private int health;
+    private int damage;
     
     public Player() {
         System.out.println("It's a dark and cruel world...");
         pos_x = 20;
         pos_y = 20;
+        directions = new ArrayList<String>();
+        items = new ArrayList<Item>();
+        upgrades = new HashMap<String, Item>();
     }
     
     /**
@@ -41,6 +49,12 @@ public class Player {
      */
     public void move(String direction) {
         
+    }
+    public String getInventory() {
+        Set keys = upgrades.keySet();
+        for(String key : keys) {
+            
+        }
     }
     
 }

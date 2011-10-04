@@ -13,7 +13,7 @@ public class Item {
     private boolean is_upgrade;
     
     public Item() {
-        
+        System.out.println("hej");
     }
     
 }
