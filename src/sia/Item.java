@@ -12,8 +12,21 @@ public class Item {
     private int damage;
     private boolean is_upgrade;
     
-    public Item() {
+    public Item(String name) {
+        this.name = name;
         System.out.println("hej");
+        is_upgrade = false;
+    }
+    
+    public String getName() {
+        return name;
+    }
+    public boolean isUpgrade() {
+        return is_upgrade;
+    }
+    
+    public String inspect() {
+        return "Item information";
     }
     
 }
