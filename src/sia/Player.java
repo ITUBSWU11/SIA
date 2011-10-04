@@ -19,6 +19,7 @@ public class Player {
     private int health;
     private int damage;
     private int money;
+    private boolean alive;
     
     public Player() {
         System.out.println("It's a dark and cruel world...");
@@ -29,6 +30,7 @@ public class Player {
         directions.add("right");
         items = new ArrayList<Item>();
         upgrades = new HashMap<String, Item>();
+        alive = true;
     }
     
     /**
@@ -147,6 +149,9 @@ public class Player {
      */
     public void alterHealth(int change) {
         health += change;
+        if(health <= 0) {
+            alive = false;
+        }
     }
     
     /**
