@@ -52,9 +52,10 @@ public class Player {
     }
     public String getInventory() {
         Set keys = upgrades.keySet();
-        for(String key : keys) {
+        /*for(String key : keys) {
             
-        }
+        }*/
+        return "Hello";
     }
     
 }
