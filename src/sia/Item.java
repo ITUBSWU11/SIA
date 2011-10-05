@@ -9,7 +9,7 @@ import java.util.HashMap;
 public class Item {
     private String name;
     private int price;
-    private int discount_pct;
+    private double discount_pct;
     private int health;
     private int damage;
     private boolean is_upgrade;
@@ -43,8 +43,8 @@ public class Item {
      * @return 
      */
     public int getPrice() {
-        int final_price = price - (price/100)*discount_pct;
-        return final_price;
+        double final_price = price - (price/100)*discount_pct;
+        return (int)final_price;
     }
     
     /**
@@ -75,7 +75,7 @@ public class Item {
      * get discount (%) on the item
      * @return 
      */
-    public int getDiscount() {
+    public double getDiscount() {
         return discount_pct;
     }
     
