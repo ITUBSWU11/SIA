@@ -1,120 +1,56 @@
 package sia;
 
 //import
-import java.util.ArrayList;
+import java.util.Map;
 import java.util.HashMap;
-import java.util.Collection;
 
 /**
  * A player instance of Space Invaders Advanced.
  * @author hypesystem
  */
-public class Player {
-    private int pos_x;
-    private int pos_y;
+public class Player extends Unit {
 //  private Image image;
-    private ArrayList<String> directions;
-    private ArrayList<Item> items;
-    private HashMap<String, Item> upgrades;
-    private int health;
-    private int damage;
+    private HashMap<String,Item> items;
     private int money;
     private boolean alive;
     
-    public Player() {
-        System.out.println("It's a dark and cruel world...");
-        pos_x = 20;
-        pos_y = 20;
-        directions = new ArrayList<String>();
-        directions.add("left");
-        directions.add("right");
-        items = new ArrayList<Item>();
-        upgrades = new HashMap<String, Item>();
+    public Player(int pos_x, int pos_y) {
+        this.pos_x = pos_x;
+        this.pos_y = pos_y;
+        items = new HashMap<String,Item>();
         alive = true;
+        damage = 0;
+        health = 0;
     }
-    
-    /**
-     * Get the x-coordinate for this player.
-     * @return x-coordinate
-     */
-    public int getX() {
-        return pos_x;
-    }
-    /**
-     * Get the y-coordinate for this player.
-     * @return y-coordinate
-     */
-    public int getY() {
-        return pos_y;
-    }
-    
-    /**
-     * Move left or right by entering the direction.
-     * @param direction left or right
-     */
-    public void move(String direction, int amount) {
-        if(directions.contains(direction)) {
-            if(direction.equals("left")) {
-                pos_x -= amount;
-            }
-            else if(direction.equals("right")) {
-                pos_x += amount;
-            }
-        }
-    }
+
     /**
      * Prints items and upgrades had by player.
      * missing: list upgrades
      * @return String with all items and upgrades
      */
-    public ArrayList<Item> getInventory() {
-        ArrayList<Item> inventory = new ArrayList<Item>();
-        for(Item item : items) {
-            inventory.add(item);
-        }
-        Collection<Item> upgrades_collection = upgrades.values();
-        for(Item upgrade : upgrades_collection) {
-            inventory.add(upgrade);
-        }
-        return inventory;
+    public Map<String,Item> getInventory() {
+        return items;
     }
     
     /**
      * Drop an item
      * @param item_number 
      */
-    public void drop(int item_number) {
-        items.remove(item_number);
-    }
-    /**
-     * Drop an upgrade
-     * @param upgrade_key 
-     */
-    public void drop(String upgrade_key) {
-        upgrades.remove(upgrade_key);
+    public void drop(String item_type) {
+        items.remove(item_type);
     }
     
     /**
-     * Add an item or upgrade
+     * Add an item
      * missing: should output in some format, not string.
      * @param item 
      */
     public void add(Item item) {
-        if(item.isUpgrade()) {
-            if(!upgrades.containsValue(item)) {
-                upgrades.put(item.getName(), item);
-            }
-            else {
-                //System.out.println("Already have upgrade! Error!");
-            }
+        if(!items.containsKey(item.getItemType())) {
+            items.put(item.getItemType(), item);
         }
         else {
-            if(!items.isEmpty() && items.size() >= 10) {
-                //System.out.println("Inventory full! Length: "+items.size());
-            }
-            else {
-                items.add(item);
-            }
+            System.out.println("Already have item of type");
         }
         calcDamage();
     }
@@ -136,14 +72,6 @@ public class Player {
     }
     
     /**
-     * get player health
-     * @return 
-     */
-    public int getHealth() {
-        return health;
-    }
-    
-    /**
      * change player health (damage taken)
      * @param change negative on dmg taken, positive on health potion
      */
@@ -154,31 +82,18 @@ public class Player {
         }
     }
     
-    /**
-     * get the amount of damage the player does.
-     * @return 
-     */
-    public int getDamage() {
-        return damage;
+    public boolean isAlive() {
+        return alive;
     }
     
     /**
-     * Calculate damage form items.
+     * Calculate damage form items and sets it for the player.
      */
     private void calcDamage() {
-        int total_damage = 0;
-        for(Item item : items) {
-            total_damage += item.getDamage();
+        damage = 0;
+        for(Item item : items.values()) {
+            damage += item.getDamage();
         }
-        System.out.println("Total damage: "+total_damage);
-    }
-    
-     /**
-     * set the amount of damage the player does. done internally.
-     * @param change 
-     */
-    private void setDamage(int change) {
-        damage = change;
     }
     
 }

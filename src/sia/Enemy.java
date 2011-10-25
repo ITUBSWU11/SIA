@@ -1,21 +1,14 @@
 package sia;
 
-import java.util.ArrayList;
-
 /**
  * Write a description of class Enemy here.
  * 
  * @author hypesystem
  * @author TheGreenDude
  */
-public class Enemy
+public class Enemy extends Unit
 {
-    private int pos_x;
-    private int pos_y;
     // private Image image;
-    private ArrayList<String> directions;
-    private int health;
-    private int damage;
     private boolean alive;
 
 
@@ -25,25 +18,18 @@ public class Enemy
      * @param health The health of the enemy. If negative, it will default to 0.
      * @param damage The damage of the enemy. If negative, it will default to 0.
      */
-    public Enemy(int health, int damage)
+    public Enemy(int health, int damage, int pos_x, int pos_y)
     {
-        directions = new ArrayList<String>();
-        directions.add("left");
-        directions.add("right");
         alive = true;
-        if(health < 0)
-        {
-                this.health = 0;
-        }
-        if(damage < 0)
-        {
-                this.damage = 0;
-        }
-        if(health >= 0 && damage >= 0)
-        {
-                this.health = health;
-                this.damage = damage;
-        }
+
+        if(health < 0) this.health = 0;
+        else this.health = health;
+        
+        if(damage < 0) this.damage = 0;
+        else this.damage = damage;
+        
+        this.pos_x = pos_x;
+        this.pos_y = pos_y;
     }
 
     /** 
@@ -75,52 +61,9 @@ public class Enemy
                 damage = newDamage;
         }
     }
-
-    /** 
-     * @return health The current health of the enemy.
-     */
-    public int getHealth()
-    {
-        return health;
-    }
-
-    /** 
-     * @return damage The current damage of the enemy.
-     */
-    public int getDamage()
-    {
-        return damage;
-    }
-
-    /**
-     * Moves the enemy the defined direction the specified amount
-     * @param direction left or right
-     * @param amount pixels
-     */
-    public void move(String direction, int amount) {
-        if(directions.contains(direction)) {
-            if(direction.equals("left")) {
-                pos_x -= amount;
-            }
-            else if(direction.equals("right")) {
-                pos_x += amount;
-            }
-        }
-    }
-
-    /**
-     * @return pos_x The current x position of enemy.
-     */
-    public int getX()
-    {
-        return pos_x;
-    }
-
-    /**
-     * @return pos_y The current x position of enemy.
-     */
-    public int getY()
-    {
-        return pos_y;
+    
+    @Override
+    public boolean isAlive() {
+        return alive;
     }
 }

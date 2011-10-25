@@ -1,12 +1,10 @@
 package sia;
 
-import java.util.HashMap;
-
 /**
  * An item.
  * @author hypesystem
  */
-public class Item {
+public abstract class Item {
     private String name;
     private int price;
     private double discount_pct;
@@ -14,12 +12,11 @@ public class Item {
     private int damage;
     private boolean is_upgrade;
     
-    public Item(String name, int price, int health, int damage, boolean is_upgrade) {
+    public Item(String name, int price, int health, int damage) {
         this.name = name;
         this.price = price;
         this.health = health;
         this.damage = damage;
-        this.is_upgrade = is_upgrade;
     }
     
     /**
@@ -79,25 +76,6 @@ public class Item {
         return discount_pct;
     }
     
-    /**
-     * Returns HashMap of information with the keys:
-     * name, price, discount_pct, health, damage, upgrade
-     * @return HashMap of information
-     */
-    public HashMap inspect() {
-        HashMap<String, String> item_information = new HashMap<String, String>();
-        item_information.put("name", name);
-        String price_str = ""+price;
-        item_information.put("price",price_str);
-        String discount_str = ""+discount_pct+"%";
-        item_information.put("discount_pct",discount_str);
-        String health_str = ""+health;
-        item_information.put("health",health_str);
-        String damage_str = ""+damage;
-        item_information.put("damage",damage_str);
-        String is_upgrade_str = ""+is_upgrade;
-        item_information.put("upgrade",is_upgrade_str);
-        return item_information;
-    }
+    public abstract String getItemType();
     
 }
