@@ -31,6 +31,16 @@ public abstract class Item {
         return discount_pct;
     }
     
+    public boolean alterDurability(int alteration) {
+        if(attributes.containsKey("durability")) {
+            int durab = attributes.get("durability") + alteration;
+            attributes.remove("durability");
+            attributes.put("durability",durab);
+            return true;
+        }
+        else return false;
+    }
+    
     public HashMap<String,Integer> getAttributes() {
         return attributes;
     }

@@ -10,7 +10,7 @@ public class Wingset extends Item {
     public Wingset(String name, int price, int health, int speed) {
         super(name, price, health);
         attributes.put("speed", speed);
-        attributes.put("durability",1);
+        attributes.put("durability",100);
     }
     
     @Override

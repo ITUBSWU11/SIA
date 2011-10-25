@@ -9,7 +9,7 @@ public class Engine extends Item {
     
     public Engine(String name, int price, int health, int speed) {
         super(name, price, health);
-        attributes.put("durability",1);
+        attributes.put("durability",100);
         attributes.put("speed",speed);
     }
     
