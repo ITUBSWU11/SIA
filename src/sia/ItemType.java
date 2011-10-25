@@ -1,7 +1,7 @@
 package sia;
 
 /**
- *
+ * Different types of items
  * @author hypesystem
  */
 public enum ItemType {

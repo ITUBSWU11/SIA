@@ -1,11 +1,10 @@
 package sia;
 
-//import
 import java.util.Map;
 import java.util.HashMap;
 
 /**
- * A player instance of Space Invaders Advanced.
+ * A player.
  * @author hypesystem
  */
 public class Player extends Unit {
@@ -23,28 +22,14 @@ public class Player extends Unit {
         health = 0;
     }
 
-    /**
-     * Prints items and upgrades had by player.
-     * missing: list upgrades
-     * @return String with all items and upgrades
-     */
     public Map<ItemType,Item> getInventory() {
         return items;
     }
-    
-    /**
-     * Drop an item
-     * @param item_number 
-     */
+
     public void dropItem(ItemType type) {
         items.remove(type);
     }
-    
-    /**
-     * Add an item
-     * missing: should output in some format, not string.
-     * @param item 
-     */
+
     public void addItem(Item item) {
         if(!items.containsKey(item.getItemType())) {
             items.put(item.getItemType(), item);
@@ -54,42 +39,31 @@ public class Player extends Unit {
         }
         calcDamage();
     }
-    
-    /**
-     * get player money
-     * @return 
-     */
+
     public int getMoney() {
         return money;
     }
-    
-    /**
-     * change player money (shop)
-     * @param change 
-     */
+
     public void alterMoney(int change) {
         money += change;
+        if(money <= 0) money = 0;
     }
-    
-    /**
-     * change player health (damage taken)
-     * @param change negative on dmg taken, positive on health potion
-     */
+
     public void alterHealth(int change) {
-        health += change;
-        if(health <= 0) {
-            alive = false;
+        if(health > 0) {
+            health += change;
+            if(health <= 0) {
+                alive = false;
+            }
         }
+        else alive = false;
     }
     
     @Override
     public boolean isAlive() {
         return alive;
     }
-    
-    /**
-     * Calculate damage form items and sets it for the player.
-     */
+
     private void calcDamage() {
         damage = 0;
         for(Item item : items.values()) {

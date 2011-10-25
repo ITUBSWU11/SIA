@@ -1,9 +1,7 @@
 package sia;
 
-import java.util.HashMap;
-
 /**
- *
+ * A set of wings.
  * @author hypesystem
  */
 public class Wingset extends Item {

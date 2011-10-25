@@ -1,9 +1,7 @@
 package sia;
 
-import java.util.HashMap;
-
 /**
- *
+ * An engine.
  * @author hypesystem
  */
 public class Engine extends Item {
