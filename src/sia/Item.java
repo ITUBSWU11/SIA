@@ -1,55 +1,30 @@
 package sia;
 
+import java.util.HashMap;
+
 /**
  * An item.
  * @author hypesystem
  */
 public abstract class Item {
     private String name;
-    private int price;
     private double discount_pct;
-    private int health;
-    private int damage;
+    protected HashMap<String,Integer> attributes;
     
-    public Item(String name, int price, int health, int damage) {
+    public Item(String name, int price, int health) {
         this.name = name;
-        this.price = price;
-        this.health = health;
-        this.damage = damage;
+        attributes.put("price", price);
+        attributes.put("heatlh", health);
         discount_pct = 0;
-    }
-    
-    /**
-     * get the name of the item
-     * @return 
-     */
-    public String getName() {
-        return name;
     }
     
     /**
      * get price of item
      * @return 
      */
-    public int getPrice() {
-        double final_price = price - ((price/100)*discount_pct);
+    public int getFinalPrice() {
+        double final_price = attributes.get("price") - ((attributes.get("price")/100)*discount_pct);
         return (int)final_price;
-    }
-    
-    /**
-     * get health bonus of item
-     * @return 
-     */
-    public int getHealth() {
-        return health;
-    }
-    
-    /**
-     * get damage bonus of item
-     * @return 
-     */
-    public int getDamage() {
-        return damage;
     }
     
     /**
@@ -68,8 +43,10 @@ public abstract class Item {
         return discount_pct;
     }
     
-    public abstract ItemType getItemType();
+    public HashMap<String,Integer> getAttributes() {
+        return attributes;
+    }
     
-    public abstract boolean hasDurability();
+    public abstract ItemType getItemType();
     
 }

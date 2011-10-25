@@ -10,7 +10,7 @@ import java.util.HashMap;
  */
 public class Player extends Unit {
 //  private Image image;
-    private HashMap<ItemType,Item> items;
+    private Map<ItemType,Item> items;
     private int money;
     private boolean alive;
     
@@ -93,7 +93,9 @@ public class Player extends Unit {
     private void calcDamage() {
         damage = 0;
         for(Item item : items.values()) {
-            damage += item.getDamage();
+            if(item.getAttributes().containsKey("damage")) {
+                damage += item.getAttributes().get("damage");
+            }
         }
     }
     
