@@ -36,7 +36,7 @@ public class Player extends Unit {
      * Drop an item
      * @param item_number 
      */
-    public void drop(String item_type) {
+    public void dropItem(String item_type) {
         items.remove(item_type);
     }
     
@@ -45,7 +45,7 @@ public class Player extends Unit {
      * missing: should output in some format, not string.
      * @param item 
      */
-    public void add(Item item) {
+    public void addItem(Item item) {
         if(!items.containsKey(item.getItemType())) {
             items.put(item.getItemType(), item);
         }
@@ -82,6 +82,7 @@ public class Player extends Unit {
         }
     }
     
+    @Override
     public boolean isAlive() {
         return alive;
     }
