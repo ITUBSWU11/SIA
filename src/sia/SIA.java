@@ -7,7 +7,8 @@ package sia;
 public class SIA {
     
     public SIA() {
-        
+        System.out.println("FOLLOWING FILES EXIST FOR CLASSES NOT WRITTEN:"
+                + "\n - SIACanvas.java");
     }
 
     /**

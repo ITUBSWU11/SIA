@@ -10,13 +10,13 @@ public abstract class Item {
     private double discount_pct;
     private int health;
     private int damage;
-    private boolean is_upgrade;
     
     public Item(String name, int price, int health, int damage) {
         this.name = name;
         this.price = price;
         this.health = health;
         this.damage = damage;
+        discount_pct = 0;
     }
     
     /**
@@ -28,19 +28,11 @@ public abstract class Item {
     }
     
     /**
-     * Is it an upgrade? Or an item.
-     * @return 
-     */
-    public boolean isUpgrade() {
-        return is_upgrade;
-    }
-    
-    /**
      * get price of item
      * @return 
      */
     public int getPrice() {
-        double final_price = price - (price/100)*discount_pct;
+        double final_price = price - ((price/100)*discount_pct);
         return (int)final_price;
     }
     
@@ -76,6 +68,8 @@ public abstract class Item {
         return discount_pct;
     }
     
-    public abstract String getItemType();
+    public abstract ItemType getItemType();
+    
+    public abstract boolean hasDurability();
     
 }

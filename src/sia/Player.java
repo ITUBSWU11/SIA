@@ -10,14 +10,14 @@ import java.util.HashMap;
  */
 public class Player extends Unit {
 //  private Image image;
-    private HashMap<String,Item> items;
+    private HashMap<ItemType,Item> items;
     private int money;
     private boolean alive;
     
     public Player(int pos_x, int pos_y) {
         this.pos_x = pos_x;
         this.pos_y = pos_y;
-        items = new HashMap<String,Item>();
+        items = new HashMap<ItemType,Item>();
         alive = true;
         damage = 0;
         health = 0;
@@ -28,7 +28,7 @@ public class Player extends Unit {
      * missing: list upgrades
      * @return String with all items and upgrades
      */
-    public Map<String,Item> getInventory() {
+    public Map<ItemType,Item> getInventory() {
         return items;
     }
     
@@ -36,8 +36,8 @@ public class Player extends Unit {
      * Drop an item
      * @param item_number 
      */
-    public void dropItem(String item_type) {
-        items.remove(item_type);
+    public void dropItem(ItemType type) {
+        items.remove(type);
     }
     
     /**
@@ -50,7 +50,7 @@ public class Player extends Unit {
             items.put(item.getItemType(), item);
         }
         else {
-            System.out.println("Already have item of type");
+            System.out.println("Already have item of type ."+item.getItemType());
         }
         calcDamage();
     }
