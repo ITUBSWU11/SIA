@@ -1,7 +1,6 @@
 package sia;
 
 import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
 
 /**
@@ -17,6 +16,16 @@ public class SIACanvas extends JComponent {
     @Override
     public void paint(Graphics g) {
         g.setColor(Color.BLACK);
-        g.fillRect(10, 10, 10, 10);
+        g.fillRect(0, 0, 800, 600);
+    }
+    
+    @Override
+    public Dimension getPreferredSize() {
+        return new Dimension(800,600);
+    }
+    
+    @Override
+    public Dimension getMinimumSize() {
+        return new Dimension(400,300);
     }
 }

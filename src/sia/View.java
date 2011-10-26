@@ -11,6 +11,7 @@ import javax.swing.border.*;
  */
 public class View {
     private JFrame window;
+    private Container contentpane;
     private JMenuBar menu;
     private JMenu fileMenu;
     private JMenuItem newGame;
@@ -20,11 +21,13 @@ public class View {
     private JMenu helpMenu;
     private JMenuItem helpItem;
     private JMenuItem aboutItem;
+    private JPanel canvasPanel;
     private SIACanvas canvas;
     
     public View() {
         window = new JFrame("Space Invaders Advanced");
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //window.getContentPane().setLayout(new FlowLayout());
         
         //menu bar
         menu = new JMenuBar();
@@ -71,12 +74,14 @@ public class View {
         menu.add(helpMenu);
         
         //canvas
+        canvasPanel = new JPanel();
+        canvasPanel.setLayout(new FlowLayout());
         canvas = new SIACanvas();
-        canvas.setBorder(new EmptyBorder(3,3,3,3));
+        canvasPanel.add(canvas, BorderLayout.CENTER);
         
         //pack and launch
-        window.getContentPane().add(canvas);
         window.setJMenuBar(menu);
+        window.getContentPane().add(canvasPanel);
         window.pack();
         window.setVisible(true);
     }
