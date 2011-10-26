@@ -27,7 +27,6 @@ public class View {
     public View() {
         window = new JFrame("Space Invaders Advanced");
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //window.getContentPane().setLayout(new FlowLayout());
         
         //menu bar
         menu = new JMenuBar();
@@ -75,16 +74,17 @@ public class View {
         
         //canvas
         canvasPanel = new JPanel();
-        canvasPanel.setLayout(new FlowLayout());
         canvas = new SIACanvas();
-        canvasPanel.add(canvas, BorderLayout.CENTER);
+        canvasPanel.add(canvas);
         
         //pack and launch
         window.setJMenuBar(menu);
         window.getContentPane().add(canvasPanel);
         window.pack();
+        window.setResizable(false);
         window.setVisible(true);
         
+        //key listeners
         window.addKeyListener(new KeyListener() {
             @Override
             public void keyPressed(KeyEvent e) {
@@ -93,13 +93,11 @@ public class View {
             
             @Override
             public void keyReleased(KeyEvent e) {
-                
+                canvas.outputText("KEY RELEASED! WOW!");
             }
             
             @Override
-            public void keyTyped(KeyEvent e) {
-                
-            }
+            public void keyTyped(KeyEvent e) {}
         });
     }
 }
