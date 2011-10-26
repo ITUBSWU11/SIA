@@ -17,5 +17,6 @@ public class SIA {
      */
     public static void main(String[] args) {
         SIA game = new SIA();
+        View window = new View();
     }
 }
