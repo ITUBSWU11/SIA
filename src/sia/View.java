@@ -84,5 +84,22 @@ public class View {
         window.getContentPane().add(canvasPanel);
         window.pack();
         window.setVisible(true);
+        
+        window.addKeyListener(new KeyListener() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                canvas.outputText("PRESSED KEY OMG");
+            }
+            
+            @Override
+            public void keyReleased(KeyEvent e) {
+                
+            }
+            
+            @Override
+            public void keyTyped(KeyEvent e) {
+                
+            }
+        });
     }
 }
